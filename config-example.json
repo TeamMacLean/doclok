@@ -1,0 +1,37 @@
+{
+  "appName": "DocLok",
+  "port": "1337",
+  "secret": "cats",
+  "DBName": "DocLok",
+  "ldap": {
+    "url": "ldap://localhost:389",
+    "bindDn": "root",
+    "bindCredentials": "secret",
+    "searchBase": "ou=example.org",
+    "searchFilter": "(sAMAccountName={{username}})"
+  },
+  "groups": [
+    {
+      "name": "group1",
+      "email": "",
+      "division": "dept1",
+      "folderName": "group_1"
+    },
+    {
+      "name": "group2",
+      "email": "",
+      "division": "dept2",
+      "folderName": "group_1"
+    },
+    {
+      "name": "group3",
+      "email": "",
+      "division": "dept3",
+      "folderName": "group_1"
+    }
+  ],
+  "admins": [
+    "username",
+    "username2"
+  ]
+}
