@@ -6,19 +6,26 @@ const path = require('path');
 const fs = require('fs');
 
 function getDocs(user) {
-    const userGroups = user.memberOf;
 
-    return config.groups.filter(function (g) {
-        const groupsGroupName = g.group;
+    if (isAdmin(user.username)) {
+        //return all docs
+        return config.groups.reduce((output, group) => {
+            console.log('group', group);
+            console.log('folders', group.folders);
+            return output.concat(group.folders);
+        }, []);
 
-        let found = false;
-        userGroups.map(function (cug) {
-            if (cug === groupsGroupName) {
-                found = true;
-            }
-        });
-        return found;
-    });
+    }
+
+    return config.groups.reduce(function (output, group) {
+
+        if (user.memberOf.indexOf(group.group) > -1) {
+            return output.concat(group.folders);
+        }
+
+        return output;
+    },[]);
+
 }
 
 router.route('/')
@@ -119,6 +126,10 @@ function canAccess(req, res, next) {
         return res.redirect('/signin');
     }
 
+    if (isAdmin(req.user.username)) {
+        return next();
+    }
+
     let docs = getDocs(req.user);
 
     if (docs.indexOf(req.params.name)) {
@@ -127,6 +138,11 @@ function canAccess(req, res, next) {
     } else {
         return res.send('permission denied');
     }
+
+}
+
+function isAdmin(username) {
+    return config.admins.indexOf(username) > -1;
 
 }
 

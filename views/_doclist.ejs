@@ -3,11 +3,9 @@
 
     <ul class="center">
         <% docs.map(doc=>{ %>
-        <% doc.folders.map(f=>{ %>
         <li>
-            <a href="/docs/<%- f %>/"><%- f %></a>
+            <a href="/docs/<%- doc %>/"><%- doc %></a>
         </li>
-        <% }) %>
         <% }) %>
     </ul>
 </div>
