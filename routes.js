@@ -12,8 +12,8 @@ function getDocs(user) {
     if (isAdmin(user.username)) {
         //return all docs
         return config.groups.reduce((output, group) => {
-            console.log('group', group);
-            console.log('folders', group.folders);
+            // console.log('group', group);
+            // console.log('folders', group.folders);
             return output.concat(group.folders);
         }, []);
 
@@ -100,8 +100,9 @@ router.route(['/docs/:name/', '/docs/:name/*'])
         splitted.splice(2, 0, "docs");
 
 
-        let docFile = path.posix.join(__dirname, ...splitted);
-
+        // let docFile = path.posix.join(__dirname, ...splitted); //ES6 ONLY
+        const pathsArray = [__dirname];
+        let docFile = path.join.apply(null, pathsArray.concat(splitted));
         docFile = docFile.split('?')[0];
 
         if (!fs.existsSync(docFile)) {
