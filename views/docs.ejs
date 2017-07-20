@@ -1,0 +1,14 @@
+<% include head.ejs %>
+
+<div class="container">
+
+    <% if(locals.signedInUser){ %>
+    <% include _doclist.ejs %>
+    <% } else { %>
+    <% include _signin.ejs %>
+    <% } %>
+
+</div>
+
+
+<% include foot.ejs %>

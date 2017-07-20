@@ -1,0 +1,14 @@
+<% include head.ejs %>
+<div class="container pt">
+
+    <h1 class="center">Error!</h1>
+
+    <% if(locals.error){ %>
+    <h2 class="center"><%- error %></h2>
+    <% } %>
+
+    <% if(locals.message){ %>
+    <h3 class="center"><%- message %></h3>
+    <% } %>
+</div>
+<% include foot.ejs %>

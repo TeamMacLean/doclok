@@ -1,0 +1,13 @@
+<div class="container">
+    <h3 class="center">Available Documents</h3>
+
+    <ul class="center">
+        <% docs.map(doc=>{ %>
+        <% doc.folders.map(f=>{ %>
+        <li>
+            <a href="/docs/<%- f %>/"><%- f %></a>
+        </li>
+        <% }) %>
+        <% }) %>
+    </ul>
+</div>

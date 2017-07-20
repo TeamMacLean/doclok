@@ -1,20 +1,16 @@
 const path = require('path');
-const multer = require('multer');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const config = require('./config.json');
 const fs = require('fs');
-const session = require('express-session');
+var session = require('express-session');
+const rethinkSession = require('session-rethinkdb')(session);
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const util = require('./lib/auth');
-const rethinkSession = require('session-rethinkdb')(session);
-const schedule = require('node-schedule');
-const moment = require('moment');
-// const email = require('./lib/email');
-
 
 const express = require('express');
+
 const app = express();
 const server = require('http').createServer(app);
 
@@ -27,13 +23,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-const options = {
+
+const store = new rethinkSession({
     servers: [
         {host: 'localhost', port: 28015, db: config.DBName}
     ]
-};
-
-const store = new rethinkSession(options);
+});
 
 app.use(session({
     secret: config.secret,
@@ -46,7 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function (req, res, next) {
-    if (req.user !== null) {
+    if (req.user) {
         res.locals.signedInUser = {};
         res.locals.signedInUser.username = req.user.username;
         res.locals.signedInUser.name = req.user.name;

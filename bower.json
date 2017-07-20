@@ -1,0 +1,19 @@
+{
+  "name": "doclok",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Martin Page <wookoouk@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/TeamMacLean/doclok",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

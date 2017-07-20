@@ -1,0 +1,54 @@
+.header .container {
+    border-top: 0;
+    padding-bottom: 7.5rem;
+    padding-top: 7.5rem;
+    position: relative;
+    text-align: center;
+}
+
+form input, form label, form button {
+    /*max-width: 500px;*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
+}
+
+form {
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.pull-right {
+    float: right;
+}
+
+.block {
+    display: block;
+}
+
+nav, .nav {
+    background-color: #9B4DCA;
+    color: white;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+nav a, .nav a {
+    color: white;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 90px;
+    height: auto;
+}
+
+.heavy{
+    font-weight: 900;
+}
