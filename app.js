@@ -1,9 +1,11 @@
+"use strict";
+
 const path = require('path');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const config = require('./config.json');
 const fs = require('fs');
-var session = require('express-session');
+const session = require('express-session');
 const rethinkSession = require('session-rethinkdb')(session);
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
